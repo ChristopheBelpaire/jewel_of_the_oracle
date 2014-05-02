@@ -1,12 +1,12 @@
-def fill solution, numbers, index
+def fill(solution, numbers, index)
 	for i in (0..(numbers.size-1))		
 		solution[index] = numbers[i]
     n = Array.new(numbers)
 		n.delete_at(i)		   
-	  if (n.size!=0 ) 
-      if(test solution ) then fill Array.new(solution), n, index+1 end 
+	  if n.any?  
+      fill(Array.new(solution), n, index+1) if test(solution)
     else
-      if(test solution) then  print solution.inspect+"\n" end   
+      print solution.inspect+"\n" if test(solution)
     end    
 	end   	
 end
@@ -41,4 +41,4 @@ def test s
 end
 solution =[]
 n = [0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9]
-fill solution, n,0
+fill(solution, n,0)
