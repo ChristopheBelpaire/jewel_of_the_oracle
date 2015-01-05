@@ -1,0 +1,16 @@
+defmodule Jewel do
+  def combine(a) do
+    _combine(a, [], [])
+  end
+
+  defp _combine([a], rest, _) do
+     [rest++[a]]
+  end
+
+  defp _combine(array, rest, allComb) do
+    Enum.reduce(array, allComb, fn element, acc -> acc++_combine(List.delete(array, element), rest++[element], allComb) end)
+  end
+end
+
+
+IO.inspect(Jewel.combine([1,2,3]))
